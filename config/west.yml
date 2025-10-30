@@ -35,4 +35,4 @@ manifest:
       revision: main
       
   self:
-    path: configr
+    path: config
