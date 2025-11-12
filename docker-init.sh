@@ -18,7 +18,14 @@ NC='\033[0m' # No Color
 
 # ヘルパー関数: Docker を実行
 run_docker() {
-    docker run --rm -it \
+    # TTYが利用可能かチェック
+    if [ -t 0 ]; then
+        local TTY_FLAG="-it"
+    else
+        local TTY_FLAG="-i"
+    fi
+
+    docker run --rm $TTY_FLAG \
         --user $(id -u):$(id -g) \
         -v "$PWD:$WORKSPACE" \
         -w "$WORKSPACE" \

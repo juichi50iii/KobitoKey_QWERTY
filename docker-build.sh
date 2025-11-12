@@ -18,7 +18,14 @@ NC='\033[0m' # No Color
 
 # ヘルパー関数: Docker を実行
 run_docker() {
-    docker run --rm -it \
+    # TTYが利用可能かチェック
+    if [ -t 0 ]; then
+        local TTY_FLAG="-it"
+    else
+        local TTY_FLAG="-i"
+    fi
+
+    docker run --rm $TTY_FLAG \
         --user $(id -u):$(id -g) \
         -v "$PWD:$WORKSPACE" \
         -w "$WORKSPACE" \
@@ -36,7 +43,9 @@ build_target() {
     echo -e "${BLUE}ビルド中: ${target_name}${NC}"
     echo -e "${BLUE}========================================${NC}"
 
-    run_docker west build -p -d "$build_dir" -b seeeduino_xiao_ble -- \
+    run_docker west build -s zmk/app -p -d "$build_dir" -b seeeduino_xiao_ble -- \
+        -DZMK_CONFIG="$WORKSPACE/config" \
+        -DZephyr_DIR="$WORKSPACE/zephyr/share/zephyr-package/cmake" \
         -DSHIELD="$shield"
 
     echo -e "${GREEN}✓ ${target_name} のビルドが完了しました${NC}"
@@ -56,6 +65,12 @@ main() {
     else
         echo -e "${GREEN}✓ Docker イメージが見つかりました${NC}"
     fi
+    echo ""
+
+    # Zephyr のエクスポート
+    echo -e "${YELLOW}Zephyr をエクスポート中...${NC}"
+    run_docker west zephyr-export
+    echo -e "${GREEN}✓ Zephyr のエクスポートが完了しました${NC}"
     echo ""
 
     # ビルド開始時刻

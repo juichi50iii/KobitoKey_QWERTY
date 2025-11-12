@@ -100,10 +100,13 @@ docker run hello-world
 
 ```bash
 docker run --rm -it \
+  --user $(id -u):$(id -g) \
   -v "$PWD:/workspace" \
   -w /workspace \
   zmkfirmware/zmk-build-arm:stable \
-  west build -p -d build/left -b seeeduino_xiao_ble -- \
+  west build -s zmk/app -p -d build/left -b seeeduino_xiao_ble -- \
+    -DZMK_CONFIG="/workspace/config" \
+    -DZephyr_DIR="/workspace/zephyr/share/zephyr-package/cmake" \
     -DSHIELD="KobitoKey_left rgbled_adapter"
 ```
 
@@ -111,10 +114,13 @@ docker run --rm -it \
 
 ```bash
 docker run --rm -it \
+  --user $(id -u):$(id -g) \
   -v "$PWD:/workspace" \
   -w /workspace \
   zmkfirmware/zmk-build-arm:stable \
-  west build -p -d build/right -b seeeduino_xiao_ble -- \
+  west build -s zmk/app -p -d build/right -b seeeduino_xiao_ble -- \
+    -DZMK_CONFIG="/workspace/config" \
+    -DZephyr_DIR="/workspace/zephyr/share/zephyr-package/cmake" \
     -DSHIELD="KobitoKey_right rgbled_adapter"
 ```
 
@@ -122,10 +128,13 @@ docker run --rm -it \
 
 ```bash
 docker run --rm -it \
+  --user $(id -u):$(id -g) \
   -v "$PWD:/workspace" \
   -w /workspace \
   zmkfirmware/zmk-build-arm:stable \
-  west build -p -d build/settings_reset -b seeeduino_xiao_ble -- \
+  west build -s zmk/app -p -d build/settings_reset -b seeeduino_xiao_ble -- \
+    -DZMK_CONFIG="/workspace/config" \
+    -DZephyr_DIR="/workspace/zephyr/share/zephyr-package/cmake" \
     -DSHIELD=settings_reset
 ```
 
