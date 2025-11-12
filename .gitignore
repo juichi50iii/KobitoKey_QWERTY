@@ -1,0 +1,88 @@
+# ZMK ビルド成果物
+build/
+*.uf2
+
+# West ワークスペース
+.west/
+zmk/
+zmk-*/
+modules/
+zephyr/*
+!zephyr/module.yml
+tools/
+bootloader/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+venv/
+env/
+ENV/
+.venv/
+
+# IDE / エディタ
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.cproject
+.settings/
+CLAUDE.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 一時ファイル
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+*.swp
+*.swo
+
+# Docker キャッシュ（オプション）
+.ccache/
+
+# 環境変数ファイル
+.env
+.env.local
+.env.*.local
+
+# カバレッジレポート
+coverage/
+*.lcov
+
+# その他
+node_modules/
+.pytest_cache/
+.mypy_cache/
+.tox/
