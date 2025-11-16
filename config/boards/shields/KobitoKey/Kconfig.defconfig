@@ -1,10 +1,39 @@
-# 左（central）
+# ドングル設定（新規）
+if SHIELD_KOBITOKEY_DONGLE_XIAO
+
+config ZMK_KEYBOARD_NAME
+    default "KobitoKey"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
+    default 2
+
+config BT_MAX_CONN
+    default 7
+
+config BT_MAX_PAIRED
+    default 7
+
+config ZMK_POINTING
+    default y
+
+config SPI
+    default y
+
+endif
+
+# 左（central）- ドングルなし構成用
 if SHIELD_KOBITOKEY_LEFT
 config ZMK_KEYBOARD_NAME
     default "KobitoKey"
 endif
 
-# 左右共通
+# 左右共通 - ドングルなし構成用
 if SHIELD_KOBITOKEY_LEFT || SHIELD_KOBITOKEY_RIGHT
 config ZMK_SPLIT
     default y
@@ -12,4 +41,21 @@ config ZMK_POINTING
     default y
 config SPI
     default y
+endif
+
+# ペリフェラル専用シールド設定（新規）
+if SHIELD_KOBITOKEY_LEFT_PERIPHERAL || SHIELD_KOBITOKEY_RIGHT_PERIPHERAL
+
+config ZMK_SPLIT
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default n
+
+config ZMK_POINTING
+    default y
+
+config SPI
+    default y
+
 endif

@@ -1,5 +1,17 @@
+# 既存シールド（ドングルなし構成用）
 config SHIELD_KOBITOKEY_LEFT
     def_bool $(shields_list_contains,KobitoKey_left)
 
 config SHIELD_KOBITOKEY_RIGHT
     def_bool $(shields_list_contains,KobitoKey_right)
+
+# ドングル用ペリフェラルシールド（新規）
+config SHIELD_KOBITOKEY_LEFT_PERIPHERAL
+    def_bool $(shields_list_contains,KobitoKey_left_peripheral)
+
+config SHIELD_KOBITOKEY_RIGHT_PERIPHERAL
+    def_bool $(shields_list_contains,KobitoKey_right_peripheral)
+
+# ドングルシールド（新規）
+config SHIELD_KOBITOKEY_DONGLE_XIAO
+    def_bool $(shields_list_contains,KobitoKey_dongle_xiao)

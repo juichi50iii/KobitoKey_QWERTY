@@ -34,7 +34,7 @@
         >;
     };
 
-    /* 右側トラックボールを split 入力として扱う（ID=0） */
+    /* トラックボールを split 入力として扱う */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -42,6 +42,11 @@
         tb_right_split: tb_right_split@0 {
             compatible = "zmk,input-split";
             reg = <0>;
+        };
+
+        tb_left_split: tb_left_split@1 {
+            compatible = "zmk,input-split";
+            reg = <1>;
         };
     };
 
@@ -55,7 +60,6 @@
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&tb_right_split>;
-        
     };
 };
 

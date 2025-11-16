@@ -4,6 +4,7 @@
     /* キーボード全体の物理レイアウト（名前は任意） */
     kobitokey_layout: physical_layout_0 {
         compatible = "zmk,physical-layout";
+        transform = <&default_transform>;
         display-name = "KobitoKey Default";
 
         /* 必須：キー位置。順番は keymap のバインディング順と一致させる */

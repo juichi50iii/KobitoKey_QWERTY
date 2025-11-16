@@ -9,7 +9,9 @@ manifest:
     - name: hsgw
       url-base: https://github.com/hsgw
     - name: caksoylar  # <-- led
-      url-base: https://github.com/caksoylar  
+      url-base: https://github.com/caksoylar
+    - name: carrefinho  # <-- Prospector dongle
+      url-base: https://github.com/carrefinho  
 
   projects:
     # ZMK 本体。公式の app/west.yml を取り込む
@@ -33,6 +35,11 @@ manifest:
     - name: zmk-rgbled-widget  # <-- led
       remote: caksoylar
       revision: main
-      
+
+    # Prospector dongle module (display and adapter)
+    - name: prospector-zmk-module
+      remote: carrefinho
+      revision: main
+
   self:
     path: config

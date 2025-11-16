@@ -38,15 +38,34 @@ build_target() {
     local target_name=$1
     local build_dir=$2
     local shield=$3
+    local cmake_args=$4
+    local snippet=$5
 
     echo -e "${BLUE}========================================${NC}"
     echo -e "${BLUE}ビルド中: ${target_name}${NC}"
     echo -e "${BLUE}========================================${NC}"
 
-    run_docker west build -s zmk/app -p -d "$build_dir" -b seeeduino_xiao_ble -- \
-        -DZMK_CONFIG="$WORKSPACE/config" \
-        -DZephyr_DIR="$WORKSPACE/zephyr/share/zephyr-package/cmake" \
-        -DSHIELD="$shield"
+    # west buildコマンドの構築
+    # snippetは -S オプションとして -- の前に配置する必要がある
+    local build_cmd=(west build -s zmk/app -p -d "$build_dir" -b seeeduino_xiao_ble)
+
+    # snippetがある場合は --の前に追加
+    if [ -n "$snippet" ]; then
+        build_cmd+=(-S "$snippet")
+    fi
+
+    # -- 以降にCMake引数を追加
+    build_cmd+=(--)
+    build_cmd+=(-DZMK_CONFIG="$WORKSPACE/config")
+    build_cmd+=(-DZephyr_DIR="$WORKSPACE/zephyr/share/zephyr-package/cmake")
+    build_cmd+=(-DSHIELD="$shield")
+
+    # 追加のCMake引数
+    if [ -n "$cmake_args" ]; then
+        build_cmd+=("$cmake_args")
+    fi
+
+    run_docker "${build_cmd[@]}"
 
     echo -e "${GREEN}✓ ${target_name} のビルドが完了しました${NC}"
     echo ""
@@ -76,11 +95,54 @@ main() {
     # ビルド開始時刻
     start_time=$(date +%s)
 
-    # 左側のビルド
-    build_target "左側キーボード" "build/left" "KobitoKey_left rgbled_adapter"
+    echo -e "${BLUE}========================================${NC}"
+    echo -e "${BLUE}ドングルなし構成のビルド${NC}"
+    echo -e "${BLUE}========================================${NC}"
+    echo ""
 
-    # 右側のビルド
-    build_target "右側キーボード" "build/right" "KobitoKey_right rgbled_adapter"
+    # 左側のビルド（ドングルなし）
+    build_target "左側キーボード（ドングルなし）" \
+        "build/left_dongleless" \
+        "KobitoKey_left rgbled_adapter"
+
+    # 右側のビルド（ドングルなし）
+    build_target "右側キーボード（ドングルなし）" \
+        "build/right_dongleless" \
+        "KobitoKey_right rgbled_adapter"
+
+    echo -e "${BLUE}========================================${NC}"
+    echo -e "${BLUE}ドングルあり構成のビルド${NC}"
+    echo -e "${BLUE}========================================${NC}"
+    echo ""
+
+    # ドングルのビルド（XIAO BLE版）
+    build_target "ドングル（XIAO BLE版）" \
+        "build/dongle" \
+        "KobitoKey_dongle_xiao" \
+        "-DCONFIG_ZMK_STUDIO=y" \
+        "studio-rpc-usb-uart"
+
+    # ドングルのビルド（Prospector版）
+    build_target "ドングル（Prospector版）" \
+        "build/dongle_prospector" \
+        "KobitoKey_dongle_xiao prospector_adapter" \
+        "-DCONFIG_ZMK_STUDIO=y" \
+        "studio-rpc-usb-uart"
+
+    # 左側ペリフェラルのビルド
+    build_target "左側ペリフェラル" \
+        "build/left_peripheral" \
+        "KobitoKey_left_peripheral rgbled_adapter"
+
+    # 右側ペリフェラルのビルド
+    build_target "右側ペリフェラル" \
+        "build/right_peripheral" \
+        "KobitoKey_right_peripheral rgbled_adapter"
+
+    echo -e "${BLUE}========================================${NC}"
+    echo -e "${BLUE}共通ファームウェアのビルド${NC}"
+    echo -e "${BLUE}========================================${NC}"
+    echo ""
 
     # 設定リセットのビルド
     build_target "設定リセット" "build/settings_reset" "settings_reset"
@@ -97,14 +159,25 @@ main() {
     echo -e "${BLUE}ビルド時間: ${elapsed}秒${NC}"
     echo ""
     echo -e "${YELLOW}ファームウェアファイルの場所:${NC}"
-    echo -e "  左側:           ${GREEN}build/left/zephyr/zmk.uf2${NC}"
-    echo -e "  右側:           ${GREEN}build/right/zephyr/zmk.uf2${NC}"
+    echo ""
+    echo -e "${BLUE}【ドングルなし構成】${NC}"
+    echo -e "  左側:           ${GREEN}build/left_dongleless/zephyr/zmk.uf2${NC}"
+    echo -e "  右側:           ${GREEN}build/right_dongleless/zephyr/zmk.uf2${NC}"
+    echo ""
+    echo -e "${BLUE}【ドングルあり構成】${NC}"
+    echo -e "  ドングル（XIAO BLE版）:  ${GREEN}build/dongle/zephyr/zmk.uf2${NC}"
+    echo -e "  ドングル（Prospector版）: ${GREEN}build/dongle_prospector/zephyr/zmk.uf2${NC}"
+    echo -e "  左ペリフェラル:          ${GREEN}build/left_peripheral/zephyr/zmk.uf2${NC}"
+    echo -e "  右ペリフェラル:          ${GREEN}build/right_peripheral/zephyr/zmk.uf2${NC}"
+    echo ""
+    echo -e "${BLUE}【共通】${NC}"
     echo -e "  設定リセット:   ${GREEN}build/settings_reset/zephyr/zmk.uf2${NC}"
     echo ""
     echo -e "${YELLOW}次のステップ:${NC}"
-    echo -e "  1. キーボードをブートローダーモードで接続"
-    echo -e "  2. 上記の .uf2 ファイルをキーボードにコピー"
-    echo -e "  3. 詳細は DOCKER_BUILD_SETUP.md を参照"
+    echo -e "  1. 使用する構成を選択（ドングルあり/なし）"
+    echo -e "  2. キーボードをブートローダーモードで接続"
+    echo -e "  3. 対応する .uf2 ファイルをキーボードにコピー"
+    echo -e "  4. 詳細は DONGLE_IMPLEMENTATION_PLAN.md を参照"
     echo ""
 }
 
