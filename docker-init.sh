@@ -80,7 +80,7 @@ main() {
     echo -e "${GREEN}========================================${NC}"
     echo ""
     echo -e "${YELLOW}次のステップ:${NC}"
-    echo -e "  1. キーマップを編集: ${BLUE}boards/shields/KobitoKey/KobitoKey.keymap${NC}"
+    echo -e "  1. キーマップを編集: ${BLUE}config/KobitoKey.keymap${NC}"
     echo -e "  2. ファームウェアをビルド: ${BLUE}./docker-build.sh${NC}"
     echo ""
     echo -e "${YELLOW}参考ドキュメント:${NC}"
