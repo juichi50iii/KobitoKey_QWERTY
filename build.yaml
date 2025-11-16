@@ -1,10 +1,44 @@
 include:
- - board: seeeduino_xiao_ble
-   shield: KobitoKey_left rgbled_adapter
-   snippet: studio-rpc-usb-uart
-   
- - board: seeeduino_xiao_ble
-   shield: KobitoKey_right rgbled_adapter
+  # ========================================
+  # ドングルなし構成（既存・維持）
+  # ========================================
+  - board: seeeduino_xiao_ble
+    shield: KobitoKey_left rgbled_adapter
+    artifact-name: KobitoKey_left_dongleless
 
- - board: seeeduino_xiao_ble
-   shield: settings_reset
+  - board: seeeduino_xiao_ble
+    shield: KobitoKey_right rgbled_adapter
+    artifact-name: KobitoKey_right_dongleless
+
+  # ========================================
+  # ドングルあり構成（新規）
+  # ========================================
+  # ドングル（セントラル） - XIAO BLE版
+  - board: seeeduino_xiao_ble
+    shield: KobitoKey_dongle_xiao
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: KobitoKey_dongle_xiao
+    snippet: studio-rpc-usb-uart
+
+  # ドングル（セントラル） - Prospector版
+  - board: seeeduino_xiao_ble
+    shield: KobitoKey_dongle_xiao prospector_adapter
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: KobitoKey_dongle_prospector
+    snippet: studio-rpc-usb-uart
+
+  # 左側ペリフェラル
+  - board: seeeduino_xiao_ble
+    shield: KobitoKey_left_peripheral rgbled_adapter
+    artifact-name: KobitoKey_left_peripheral
+
+  # 右側ペリフェラル
+  - board: seeeduino_xiao_ble
+    shield: KobitoKey_right_peripheral rgbled_adapter
+    artifact-name: KobitoKey_right_peripheral
+
+  # ========================================
+  # settings_reset（共通）
+  # ========================================
+  - board: seeeduino_xiao_ble
+    shield: settings_reset
