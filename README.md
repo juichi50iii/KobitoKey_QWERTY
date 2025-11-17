@@ -51,4 +51,6 @@
 
 本ファームウェアで発生した問題を小人キー作者である、五十川さんに問い合わせないでください。
 
-![my_keymap](https://github.com/user-attachments/assets/068a18bf-0fcd-476d-8fb0-1c621d394f4f)
+
+![my_keymap](https://github.com/user-attachments/assets/b9f95f79-436f-46e1-8173-e2fcd53f9481)
+
