@@ -37,9 +37,11 @@ manifest:
       revision: main
 
     # Prospector dongle module (display and adapter)
+    # Forked to fix "A" display issue in battery_bar.c
+    # Original: https://github.com/carrefinho/prospector-zmk-module
     - name: prospector-zmk-module
-      remote: carrefinho
-      revision: main
+      url: https://github.com/happy-ryo/prospector-zmk-module
+      revision: fix/battery-bar-display-A-character
 
   self:
     path: config
