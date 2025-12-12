@@ -2,6 +2,10 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include "KobitoKey-layouts.dtsi"
 
+&uicr {
+    nfct-pins-as-gpios;
+};
+
 / {
     /* 行列スキャン：rowは左右共通、colは左右で分ける */
     kscan0: kscan0 {
@@ -14,11 +18,11 @@
                     <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* 例: D1 */
                     <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* 例: D2 */
                     <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* 例: D3 */
-        col-gpios = <&xiao_d 10 GPIO_ACTIVE_HIGH>, 
-                    <&xiao_d 9 GPIO_ACTIVE_HIGH> , 
-                    <&xiao_d 8 GPIO_ACTIVE_HIGH> , 
-                    <&xiao_d 7 GPIO_ACTIVE_HIGH> , 
-                    <&gpio0 10 GPIO_ACTIVE_HIGH> ; 
+        col-gpios = <&xiao_d 10 GPIO_ACTIVE_HIGH>,
+                    <&xiao_d 9 GPIO_ACTIVE_HIGH> ,
+                    <&xiao_d 8 GPIO_ACTIVE_HIGH> ,
+                    <&xiao_d 7 GPIO_ACTIVE_HIGH> ,
+                    <&gpio0 10 GPIO_ACTIVE_HIGH> ;
     };
 
     /* 左右合体で 4行×10列（左0..4, 右5..9） */
@@ -55,7 +59,7 @@
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&tb_right_split>;
-        
+
     };
 };
 
