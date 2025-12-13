@@ -1,6 +1,4 @@
 manifest:
-  defaults:
-    revision: v0.3
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
@@ -15,12 +13,13 @@ manifest:
     # ZMK 本体。公式の app/west.yml を取り込む
     - name: zmk
       remote: zmkfirmware
+      revision: v0.3
       import: app/west.yml
 
     # PMW3610 ドライバ（外部モジュール）
     - name: zmk-pmw3610-driver
       remote: badjeff
-      revision: main
+      revision: zmk-0.3
       # 置き場所を明示したい場合は path を指定（任意）
       # path: modules/zmk-pmw3610-driver
     
