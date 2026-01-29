@@ -41,11 +41,20 @@
 &kp Q      &kp W     &kp E     &kp R        &kp T      &kp Y     &kp U        &kp I      &kp O      &kp P
 &kp A      &kp S     &kp D     &kp F        &kp G      &kp H     &kp J        &kp K      &kp L      &kp SEMI
 &kp Z      &kp X     &kp C     &kp V        &kp B      &kp N     &kp M        &kp COMMA  &kp DOT    &kp APOS
-&kp LSHFT  &kp LALT  &kp LCMD  &lt 2 SPACE  &kp LCTRL  &kp BSPC  &lt 1 ENTER  &kp RSHFT  &kp RSHFT  &mt LALT SLASH
+&kp LSHFT  &kp LALT  &kp LCMD  &lt 3 SPACE  &kp LCTRL  &kp BSPC  &lt 2 ENTER  &kp RSHFT  &kp RSHFT  &mt LALT SLASH
             >;
         };
 
         layer1 {
+            bindings = <
+&kp PERCENT  &kp DOLLAR  &kp AMPERSAND    &kp BACKSLASH  &kp MINUS  &kp ASTRK  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp SEMI          &kp COLON
+&kp AT_SIGN  &kp POUND   &kp EXCLAMATION  &kp QUESTION   &kp PLUS   &kp SLASH  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES
+&trans       &kp TILDE   &trans           &kp CARET      &kp EQUAL  &kp UNDER  &kp LESS_THAN         &kp GREATER_THAN       &trans            &trans
+&trans       &trans      &trans           &trans         &trans     &trans     &trans                &trans                 &trans            &trans
+            >;
+        };
+
+        layer2 {
             label = "NUMBER";
             bindings = <
 &kp N0     &kp N1  &kp N2  &kp N3     &trans  &kp MINUS  &trans     &kp UP    &trans     &trans
@@ -55,7 +64,7 @@
             >;
         };
 
-        layer2 {
+        layer3 {
             label = "FUNCTION";
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp F1   &kp F2   &kp F3  &kp F4  &kp F5
@@ -65,7 +74,7 @@
             >;
         };
 
-        layer3 {
+        layer4 {
             label = "MOUSE";
             bindings = <
 &trans     &trans  &trans    &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
