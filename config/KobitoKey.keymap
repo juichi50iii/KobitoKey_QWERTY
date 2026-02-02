@@ -98,6 +98,7 @@
         };
 
         layer_5 {
+            label = "Scroll";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB2  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
