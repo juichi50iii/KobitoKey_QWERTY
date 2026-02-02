@@ -73,7 +73,7 @@
 &kp ESC  &trans    &kp UP    &trans     &trans  &kp MINUS        &kp KP_N7        &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS
 &trans   &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &kp PLUS         &kp KP_N4        &kp KP_N5        &kp KP_N6        &kp KP_PLUS
 &trans   &trans    &trans    &trans     &trans  &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT
-&trans   &trans    &trans    &kp LSHFT  &trans  &trans           &trans           &trans           &trans           &trans
+&trans   &trans    &trans    &trans     &trans  &trans           &trans           &trans           &trans           &trans
             >;
         };
 
@@ -90,20 +90,20 @@
         layer4 {
             label = "MOUSE";
             bindings = <
-&trans     &trans  &trans    &trans    &trans  &trans  &mkp MB1  &trans  &mo 5   &trans
-&trans     &trans  &trans    &trans    &trans  &trans  &trans    &trans  &trans  &trans
-&trans     &trans  &trans    &trans    &trans  &trans  &trans    &trans  &trans  &trans
-&kp LSHFT  &trans  &kp LCMD  &kp LALT  &to 0   &trans  &trans    &trans  &to 0   &kp RALT
+&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &trans  &mo 5   &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &to 0   &trans  &trans    &trans  &trans  &trans
             >;
         };
 
         layer_5 {
             label = "Scroll";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB2  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB2  &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &mkp MB2  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans
             >;
         };
     };
