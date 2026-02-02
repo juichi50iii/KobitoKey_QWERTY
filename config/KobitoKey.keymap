@@ -29,6 +29,15 @@
 #define JP_HANZEN       GRAVE             // 半角/全角
 
 / {
+
+    &mt {
+        tapping-term-ms = <300>;
+    };
+    &lt {
+        tapping-term-ms = <300>;
+    };
+
+
     combos {
         compatible = "zmk,combos";
 
