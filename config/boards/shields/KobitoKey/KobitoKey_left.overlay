@@ -87,11 +87,11 @@
     status = "okay";
 
     input-processors =
-        <&sensor_rotation_right>;
-        /*<&zip_temp_layer 4 5000>;  オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
+        <&sensor_rotation_right>,
+        <&zip_temp_layer 4 5000>;  オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
 
     scroller {
-        layers = <1>;
+        layers = <5>;
         input-processors =
                 <&zip_x_scaler 0 1>,
                 <&zip_y_scaler 1 15>,
