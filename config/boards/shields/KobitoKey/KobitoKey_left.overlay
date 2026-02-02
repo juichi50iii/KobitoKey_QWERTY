@@ -69,7 +69,7 @@
     input-processors =
             <&sensor_rotation_left>;
 
-    scroller {
+    scroller_left {
         layers = <5>;
         input-processors =
                 <&zip_x_scaler 0 1>,
@@ -104,7 +104,7 @@
         <&sensor_rotation_right>,
         <&zip_temp_layer 4 5000>;  /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
 
-    scroller {
+    scroller_right {
         layers = <5>;
         input-processors =
                 <&zip_x_scaler 0 1>,
