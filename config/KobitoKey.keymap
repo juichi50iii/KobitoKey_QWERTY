@@ -4,6 +4,30 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+#define JP_DQUOTE       AT                // "
+#define JP_AMPERSAND    CARET             // &
+#define JP_QUOTE        AMPERSAND         // '
+#define JP_EQUAL        UNDER             // =
+#define JP_CARET        EQUAL             // ^
+#define JP_YEN          0x89              // ¥
+#define JP_PLUS         COLON             // +
+#define JP_TILDE        PLUS              // ~
+#define JP_PIPE         LS(0x89)          // |
+#define JP_AT           LEFT_BRACKET      // @
+#define JP_COLON        SINGLE_QUOTE      // :
+#define JP_ASTERISK     DOUBLE_QUOTES     // *
+#define JP_BACKQUOTE    LEFT_BRACE        // `
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_LBRACKET     RIGHT_BRACKET     // [
+#define JP_RBRACKET     BACKSLASH         // ]
+#define JP_LPAREN       ASTERISK          // (
+#define JP_RPAREN       LEFT_PARENTHESIS  // )
+#define JP_LBRACE       RIGHT_BRACE       // {
+#define JP_RBRACE       PIPE              // }
+#define JP_KANA         LANGUAGE_1        // かな
+#define JP_EISU         LANGUAGE_2        // 英数
+#define JP_HANZEN       GRAVE             // 半角/全角
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -60,10 +84,10 @@
 
         layer1 {
             bindings = <
-&kp PERCENT  &kp DOLLAR  &kp AMPERSAND    &kp BACKSLASH  &kp MINUS  &kp ASTRK  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp SEMI          &kp COLON
-&kp AT_SIGN  &kp POUND   &kp EXCLAMATION  &kp QUESTION   &kp PLUS   &kp SLASH  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES
-&trans       &kp TILDE   &trans           &kp CARET      &kp EQUAL  &kp UNDER  &kp LESS_THAN         &kp GREATER_THAN       &trans            &trans
-&trans       &trans      &trans           &trans         &trans     &trans     &trans                &trans                 &trans            &trans
+&kp PERCENT  &kp DOLLAR   &kp JP_AMPERSAND &kp JP_YEN     &kp MINUS    &kp JP_ASTERISK   &kp JP_LBRACKET       &kp JP_RBRACKET        &kp SEMI          &kp JP_COLON
+&kp JP_AT    &kp POUND    &kp EXCLAMATION  &kp QUESTION   &kp JP_PLUS  &kp SLASH         &kp JP_LPAREN         &kp JP_RPAREN          &kp JP_QUOTE      &kp JP_DQUOTE
+&trans       &kp JP_TILDE &trans           &kp JP_CARET   &kp JP_EQUAL &kp JP_UNDERSCORE &kp LESS_THAN         &kp GREATER_THAN       &trans            &trans
+&trans       &trans       &trans           &trans         &trans       &trans            &trans                &trans                 &trans            &trans
             >;
         };
 
