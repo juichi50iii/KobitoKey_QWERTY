@@ -37,7 +37,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <200>; /* センサー感度 */
+        cpi = <600>; /* センサー感度 */
 
 
         evt-type = <INPUT_EV_REL>;
