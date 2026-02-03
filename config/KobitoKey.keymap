@@ -28,16 +28,11 @@
 #define JP_EISU         LANGUAGE_2        // 英数
 #define JP_HANZEN       GRAVE             // 半角/全角
 
+&mt { tapping-term-ms = <300>; };
 
-&mt {
-    tapping-term-ms = <300>;
-};
-&lt {
-    tapping-term-ms = <300>;
-};
+&lt { tapping-term-ms = <300>; };
 
 / {
-
     combos {
         compatible = "zmk,combos";
 
@@ -93,10 +88,10 @@
 
         layer1 {
             bindings = <
-&kp PERCENT  &kp DOLLAR   &kp JP_AMPERSAND &kp JP_YEN     &kp MINUS    &kp JP_ASTERISK   &kp JP_LBRACKET       &kp JP_RBRACKET        &kp SEMI          &kp JP_COLON
-&kp JP_AT    &kp POUND    &kp EXCLAMATION  &kp QUESTION   &kp JP_PLUS  &kp SLASH         &kp JP_LPAREN         &kp JP_RPAREN          &kp JP_QUOTE      &kp JP_DQUOTE
-&trans       &kp JP_TILDE &trans           &kp JP_CARET   &kp JP_EQUAL &kp JP_UNDERSCORE &kp LESS_THAN         &kp GREATER_THAN       &trans            &trans
-&trans       &trans       &trans           &trans         &trans       &trans            &trans                &trans                 &trans            &trans
+&kp PERCENT  &kp DOLLAR    &kp JP_AMPERSAND  &kp JP_YEN    &kp MINUS     &kp JP_ASTERISK    &kp JP_LBRACKET  &kp JP_RBRACKET   &kp SEMI      &kp JP_COLON
+&kp JP_AT    &kp POUND     &kp EXCLAMATION   &kp QUESTION  &kp JP_PLUS   &kp SLASH          &kp JP_LPAREN    &kp JP_RPAREN     &kp JP_QUOTE  &kp JP_DQUOTE
+&trans       &kp JP_TILDE  &trans            &kp JP_CARET  &kp JP_EQUAL  &kp JP_UNDERSCORE  &kp LESS_THAN    &kp GREATER_THAN  &trans        &trans
+&trans       &trans        &trans            &trans        &trans        &trans             &trans           &trans            &trans        &trans
             >;
         };
 
@@ -113,10 +108,10 @@
         layer3 {
             label = "FUNCTION";
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans   &kp F7  &kp F8  &kp F9  &kp F12
-&trans        &trans        &trans        &trans        &bt BT_CLR      &trans   &kp F4  &kp F5  &kp F6  &kp F11
-&trans        &trans        &trans        &trans        &bt BT_CLR_ALL  &trans   &kp F1  &kp F2  &kp F3  &kp F10
-&trans        &trans        &trans        &trans        &trans          &kp DEL  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans     &kp F7  &kp F8  &kp F9  &kp F12
+&trans  &trans  &trans  &trans  &trans  &kp LG(D)  &kp F4  &kp F5  &kp F6  &kp F11
+&trans  &trans  &trans  &trans  &trans  &trans     &kp F1  &kp F2  &kp F3  &kp F10
+&trans  &trans  &trans  &trans  &trans  &kp DEL    &trans  &trans  &trans  &trans
             >;
         };
 
@@ -133,10 +128,10 @@
         layer_5 {
             label = "Scroll";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB2  &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &mkp MB2  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &mkp MB2  &trans    &trans  &trans
+&trans        &trans        &trans        &trans        &bt BT_CLR      &trans  &trans    &trans    &trans  &trans
+&trans        &trans        &trans        &trans        &bt BT_CLR_ALL  &trans  &trans    &mkp MB2  &trans  &trans
+&trans        &trans        &trans        &trans        &trans          &trans  &trans    &trans    &trans  &trans
             >;
         };
     };
