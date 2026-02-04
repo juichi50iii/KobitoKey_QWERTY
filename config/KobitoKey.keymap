@@ -178,7 +178,7 @@
         layer_5 {
             label = "MOUSE_2Click";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &click_and_exit  &trans  &scroll_and_exit  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
