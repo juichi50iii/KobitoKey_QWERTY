@@ -93,34 +93,20 @@
         };
     };
 
-    macros {
-        click_and_exit: click_and_exit {
-            label = "CLICK_AND_EXIT";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&mkp MB1>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&mkp MB1>,
-                <&macro_tap>,
-                <&to 0>,
-                <&macro_tap>,
-                <&sl_mouse 6>;
-        };
+macros {
+    click_and_exit: click_and_exit {
+        label = "CLICK_AND_EXIT";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings =
+            <&macro_press &mkp MB1>
+            , <&macro_pause_for_release> // ドラッグ対策に離すまで待つ
+            , <&macro_release &mkp MB1>
+            , <&macro_tap &to 0> // デフォルトレイヤーに戻る
+            , <&macro_tap &sl_mouse 6> // 一瞬だけクリック用レイヤに飛ぶ
+            ;
     };
-    macros {
-        scroll_and_exit: scroll_and_exit {
-            label = "SCROLL_AND_EXIT";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&to 5>
-                , <&macro_pause_for_release>
-                , <&macro_tap &to 0>;
-        };
-    };
+};
 //ここまで　オートマウスレイヤーからクリックキー（スクロールキー）を押下後、すぐに脱出するマクロ
 
 
