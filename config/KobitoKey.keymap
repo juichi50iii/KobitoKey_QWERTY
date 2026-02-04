@@ -32,7 +32,6 @@
 
 &lt { tapping-term-ms = <300>; };
 
-
 / {
     combos {
         compatible = "zmk,combos";
@@ -55,7 +54,7 @@
             bindings = <&kp ESC>;
         };
 
-/*
+        /*
         combo_tab {
             timeout-ms = <50>;
             key-positions = <10 11>;
@@ -111,10 +110,10 @@
         layer3 {
             label = "FUNCTION";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans     &kp F7  &kp F8  &kp F9  &kp F12
-&trans  &trans  &trans  &trans  &trans  &kp LG(D)  &kp F4  &kp F5  &kp F6  &kp F11
-&trans  &trans  &trans  &trans  &trans  &trans     &kp F1  &kp F2  &kp F3  &kp F10
-&trans  &trans  &trans  &trans  &trans  &kp DEL    &trans  &trans  &trans  &trans
+&trans  &trans  &trans     &trans  &kp LC(LA(DELETE))   &trans     &kp F7  &kp F8  &kp F9  &kp F12
+&trans  &trans  &kp LG(D)  &trans  &trans               &kp LG(D)  &kp F4  &kp F5  &kp F6  &kp F11
+&trans  &trans  &trans     &trans  &kp LC(PAUSE_BREAK)  &trans     &kp F1  &kp F2  &kp F3  &kp F10
+&trans  &trans  &trans     &trans  &trans               &kp DEL    &trans  &trans  &trans  &trans
             >;
         };
 
