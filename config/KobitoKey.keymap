@@ -33,13 +33,6 @@
 &lt { tapping-term-ms = <300>; };
 
 
-&tb_left_listener {
-
-input-processors = <&zip_temp_layer 4 250>;
-
-};
-
-
 / {
     combos {
         compatible = "zmk,combos";
