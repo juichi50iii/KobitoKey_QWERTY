@@ -80,6 +80,36 @@
         };
     };
 
+
+
+// sticky keyの設定だが、bindingsの設定が&moなので実質的にsticky layerとしての設定
+// 簡単のため、今後は単にslと呼ぶ
+behaviors {
+  sl_mouse: sticky_layer_for_mouse {
+    compatible = "zmk,behavior-sticky-key";
+    #binding-cells = <1>;
+    bindings = <&mo>;
+    release-after-ms = <200>; // 200msだけクリック用レイヤに移動する（必要に応じて時間を変更）
+    quick-release;
+    ignore-modifiers;
+  };
+};
+macros {
+    click_and_exit: click_and_exit {
+        label = "CLICK_AND_EXIT";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings =
+            <&macro_press &mkp MB1>
+            , <&macro_pause_for_release> // ドラッグ対策に離すまで待つ
+            , <&macro_release &mkp MB1>
+            , <&macro_tap &to 0> // デフォルトレイヤーに戻る
+            , <&macro_tap &sl_mouse 5> // 一瞬だけクリック用レイヤに飛ぶ
+            ;
+    };
+};
+
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -124,7 +154,7 @@
         layer4 {
             label = "MOUSE";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &trans  &mo 5   &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &click_and_exit  &trans  &mo 5   &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &to 0   &trans  &trans    &trans  &trans  &trans
