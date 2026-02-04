@@ -120,10 +120,10 @@
                 , <&macro_pause_for_release> // ドラッグ対策に離すまで待つ
                 , <&macro_release &mo 5>
                 , <&macro_tap &to 0> // デフォルトレイヤーに戻る
-                , <&macro_tap &sl_mouse 6> // 一瞬だけクリック用レイヤに飛ぶ
                 ;
         };
     };
+//ここまで　オートマウスレイヤーからクリックキー（スクロールキー）を押下後、すぐに脱出するマクロ
 
 
     keymap {
