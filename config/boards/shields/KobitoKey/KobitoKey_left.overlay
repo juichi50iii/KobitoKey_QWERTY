@@ -62,6 +62,13 @@
     };
 };
 
+&mkp_listener {
+    status = "okay";
+
+    input-processors =
+        <&zip_temp_layer 4 250>;
+};
+
 &tb_left_listener {
     status = "okay";
     device = <&tb_left>;
