@@ -175,7 +175,8 @@
             >;
         };
 
-        layer_6 {
+        layer_5 {
+            label = "MOUSE_2Click";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &mkp MB1  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans
@@ -184,7 +185,7 @@
             >;
         };
 
-        layer_5 {
+        layer_6 {
             label = "Scroll";
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &mkp MB2  &trans    &trans  &trans
