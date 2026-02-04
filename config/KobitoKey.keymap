@@ -78,6 +78,7 @@
         };
     };
 
+//ここから　オートマウスレイヤーからクリックキー（スクロールキー）を押下後、すぐに脱出するマクロ
     // sticky keyの設定だが、bindingsの設定が&moなので実質的にsticky layerとしての設定
     // 簡単のため、今後は単にslと呼ぶ
 
@@ -106,9 +107,24 @@
                 <&macro_tap>,
                 <&to 0>,
                 <&macro_tap>,
-                <&sl_mouse 5>;
+                <&sl_mouse 6>;
         };
     };
+    macros {
+        scroll_and_exit: scroll_and_exit {
+            label = "SCROLL_AND_EXIT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press &mo 5>
+                , <&macro_pause_for_release> // ドラッグ対策に離すまで待つ
+                , <&macro_release &mo 5>
+                , <&macro_tap &to 0> // デフォルトレイヤーに戻る
+                , <&macro_tap &sl_mouse 6> // 一瞬だけクリック用レイヤに飛ぶ
+                ;
+        };
+    };
+
 
     keymap {
         compatible = "zmk,keymap";
