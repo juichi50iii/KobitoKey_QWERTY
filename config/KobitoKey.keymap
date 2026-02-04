@@ -106,8 +106,7 @@ macros {
             , <&macro_tap &sl_mouse 6> // 一瞬だけクリック用レイヤに飛ぶ
             ;
     };
-};
-macros {
+
     scroll_and_exit: scroll_and_exit {
         label = "SCROLL_AND_EXIT";
         compatible = "zmk,behavior-macro";
