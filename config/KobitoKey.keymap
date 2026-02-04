@@ -33,9 +33,9 @@
 &lt { tapping-term-ms = <300>; };
 
 
-&mkp_input_listener {
+&tb_left_listener {
 
-input-processors = <&zip_temp_layer 5 250>;
+input-processors = <&zip_temp_layer 4 250>;
 
 };
 
