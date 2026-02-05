@@ -75,10 +75,10 @@
         layers = <6>;
         input-processors =
                 //<&zip_x_scaler 0 1>,
-                <&zip_x_scaler 1 45>,
+                <&zip_x_scaler 1 30>,
                 <&zip_y_scaler 1 15>,
                 <&zip_xy_to_scroll_mapper>,
-                //<&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
+                    <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
                 <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
     };
 
@@ -114,7 +114,7 @@
         layers = <6>;
         input-processors =
                 //<&zip_x_scaler 0 1>,
-                <&zip_x_scaler 1 45>,
+                <&zip_x_scaler 1 30>,
                 <&zip_y_scaler 1 15>,
                 <&zip_xy_to_scroll_mapper>,
                 <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,
