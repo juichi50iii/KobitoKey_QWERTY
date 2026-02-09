@@ -32,7 +32,7 @@
 
 &lt { tapping-term-ms = <300>; };
 
-&mkp_input_listener { input-processors = <&zip_temp_layer 5 250>; };
+//&mkp_input_listener { input-processors = <&zip_temp_layer 5 250>; };
 
 / {
     combos {
@@ -111,7 +111,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&to 6>,
+                <&macro_tap &to 6>,
                 <&macro_pause_for_release>,
                 <&macro_tap &to 0>;
         };
