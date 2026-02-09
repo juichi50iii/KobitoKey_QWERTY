@@ -87,7 +87,7 @@
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&mo>;
-            release-after-ms = <10000>; // 400msだけクリック用レイヤに移動する（必要に応じて時間を変更）
+            release-after-ms = <4000>; // 4000msだけクリック用レイヤに移動する（必要に応じて時間を変更）
             //quick-release;
             ignore-modifiers;
         };
@@ -103,8 +103,8 @@
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&mkp MB1>,
-                //<&macro_tap>,
-                //<&to 0>,
+                <&macro_tap>,
+                <&to 0>,
                 <&macro_tap>,
                 <&sl_mouse 5>;
         };
