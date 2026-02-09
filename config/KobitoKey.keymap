@@ -101,12 +101,9 @@
             bindings =
                 <&macro_press &mkp MB1>,
                 <&macro_pause_for_release>,
-                <&macro_release>,
-                <&mkp MB1>,
-                <&macro_tap>,
-                <&to 0>,
-                <&macro_tap>,
-                <&sl_mouse 5>;
+                <&macro_release &mkp MB1>,
+                <&macro_tap &to 0>,
+                <&macro_tap &sl_mouse 5>;
         };
 
         scroll_and_exit: scroll_and_exit {
@@ -116,8 +113,7 @@
             bindings =
                 <&to 6>,
                 <&macro_pause_for_release>,
-                <&macro_tap>,
-                <&to 0>;
+                <&macro_tap &to 0>;
         };
     };
 
