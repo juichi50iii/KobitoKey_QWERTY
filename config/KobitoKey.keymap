@@ -99,13 +99,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press>,
-                <&mkp MB1>,
+                <&macro_press &mkp MB1>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
                 <&mkp MB1>,
-                <&macro_tap>,
-                <&to 0>,
+                //<&macro_tap>,
+                //<&to 0>,
                 <&macro_tap>,
                 <&sl_mouse 5>;
         };
@@ -150,7 +149,7 @@
             bindings = <
 &kp ESC  &none     &kp UP    &none      &none   &msc SCRL_UP     &kp KP_N7        &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS
 &none    &kp LEFT  &kp DOWN  &kp RIGHT  &none   &msc SCRL_DOWN   &kp KP_N4        &kp KP_N5        &kp KP_N6        &kp KP_PLUS
-&trans   &trans    &trans    &trans     &trans  &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT
+&trans   &none     &none     &none      &trans  &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT
 &trans   &trans    &trans    &trans     &trans  &trans           &trans           &trans           &trans           &trans
             >;
         };
