@@ -151,10 +151,10 @@
         layer2 {
             label = "NUMBER";
             bindings = <
-&kp ESC  &none     &kp UP    &none      &msc SCRL_UP     &kp BACKSPACE    &kp KP_N7        &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS
-&none    &kp LEFT  &kp DOWN  &kp RIGHT  &msc MOVE_Y(-5)  &none            &kp KP_N4        &kp KP_N5        &kp KP_N6        &kp KP_PLUS
-&trans   &none     &none     &none      &trans           &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT
-&trans   &trans    &trans    &trans     &trans           &trans           &trans           &trans           &trans           &trans
+&kp ESC  &none     &kp UP    &none      &msc SCRL_UP    &kp BACKSPACE    &kp KP_N7        &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_MINUS
+&none    &kp LEFT  &kp DOWN  &kp RIGHT  &msc SCRL_DOWN  &none            &kp KP_N4        &kp KP_N5        &kp KP_N6        &kp KP_PLUS
+&trans   &none     &none     &none      &trans          &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_DOT
+&trans   &trans    &trans    &trans     &trans          &trans           &trans           &trans           &trans           &trans
             >;
         };
 
