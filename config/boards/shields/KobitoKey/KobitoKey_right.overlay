@@ -41,8 +41,37 @@
     };
 };
 
-&tb_right_split {
-    input = <&tb_right>;
+/ {
+  /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+    compatible = "zmk,input-processor-temp-layer";
+    #input-processor-cells = <2>;
+    require-prior-idle-ms = <350>;
+  };
+};
 
-    input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+&tb_left_listener {
+    status = "okay";
+    /* deviceはkobitokey.dtsiで&tb_left_splitに指定済み */
+    input-processors =
+            <&sensor_rotation_left>,
+            <&zip_x_scaler 0 1>,
+            <&zip_y_scaler 1 15>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
+            <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
+};
+
+&tb_right_listener {
+    status = "okay";
+    device = <&tb_right>;
+
+    input-processors =
+        <&sensor_rotation_right>,
+        <&zip_temp_layer 3 5000>;
+};
+
+&zip_temp_layer {
+    excluded-positions = <
+        6 7 8 30 32 33 39
+    >;
 };
