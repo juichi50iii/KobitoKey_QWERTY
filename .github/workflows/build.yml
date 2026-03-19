@@ -1,11 +1,7 @@
 name: Build ZMK firmware
 on: 
-  pull_request:
-    branches: [main]
-    types: [closed]
   workflow_dispatch:
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
