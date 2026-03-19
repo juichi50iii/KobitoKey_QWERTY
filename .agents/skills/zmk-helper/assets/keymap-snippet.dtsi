@@ -1,0 +1,47 @@
+/*
+ * ZMK キーマップ・スニペット
+ * レイヤー定義と behavior の標準構成
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
+
+/ {
+    behaviors {
+        /* ホールドでレイヤー、タップでキー入力の例 */
+        lt_hp: layer_tap_home_row {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_HOME_ROW";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <125>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &kp ESC   &kp Q     &kp W     &kp E     &kp R     &kp T
+                &kp TAB   &kp A     &kp S     &kp D     &kp F     &kp G
+                &kp LSHIFT &kp Z     &kp X     &kp C     &kp V     &kp B
+                                    &kp LCTRL &kp LALT  &kp SPACE
+            >;
+        };
+
+        /* マウス操作用レイヤーの例 */
+        mouse_layer {
+            bindings = <
+                &trans    &trans    &trans    &trans    &trans    &trans
+                &trans    &mkp LCLK &mkp MCLK &mkp RCLK &trans    &trans
+                &trans    &trans    &trans    &trans    &trans    &trans
+                                    &trans    &trans    &trans
+            >;
+        };
+    };
+};
