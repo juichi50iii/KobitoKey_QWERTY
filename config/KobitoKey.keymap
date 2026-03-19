@@ -5,73 +5,60 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-    combos {
-        compatible = "zmk,combos";
+    combos { compatible = "zmk,combos"; };
 
-        combo_eisu {
-            timeout-ms = <50>;
-            key-positions = <12 13>;
-            bindings = <&kp LANG2>;
-        };
+    behaviors {
+        Delete_Backspace: Delete_Backspace {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DELETE_BACKSPACE";
+            bindings = <&kp DELETE>, <&kp BACKSPACE>;
 
-        combo_kana {
-            timeout-ms = <50>;
-            key-positions = <16 17>;
-            bindings = <&kp LANG1>;
-        };
-
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp ESC>;
-        };
-
-        combo_tab {
-            timeout-ms = <50>;
-            key-positions = <10 11>;
-            bindings = <&kp TAB>;
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        Character {
             bindings = <
-&kp Q      &kp W     &kp E     &kp R        &kp T      &kp Y     &kp U        &kp I      &kp O      &kp P
-&kp A      &kp S     &kp D     &kp F        &kp G      &kp H     &kp J        &kp K      &kp L      &kp SEMI
-&kp Z      &kp X     &kp C     &kp V        &kp B      &kp N     &kp M        &kp COMMA  &kp DOT    &kp APOS
-&kp LSHFT  &kp LALT  &kp LCMD  &lt 2 SPACE  &kp LCTRL  &kp BSPC  &lt 1 ENTER  &kp RSHFT  &kp RSHFT  &mt LALT SLASH
+&kp Q           &kp W           &kp E             &kp R               &kp T         &kp Y        &kp U         &kp I         &kp O  &kp P
+&kp A           &kp S           &kp D             &kp F               &kp G         &kp H        &kp J         &kp K         &kp L  &mo 3
+&none           &kp Z           &kp X             &kp C               &kp V         &kp B        &kp N         &kp M         &none  &Delete_Backspace
+&kp LANGUAGE_1  &kp LANGUAGE_2  &kp LEFT_CONTROL  &mt LEFT_SHIFT TAB  &lt 1 RETURN  &lt 2 SPACE  &kp LEFT_ALT  &kp LEFT_GUI  &none  &none
+            >;
+
+            label = "Character";
+        };
+
+        Symbol {
+            label = "JP";
+            bindings = <
+&kp LS(NUMBER_1)  &kp LS(NUMBER_2)  &kp LS(NUMBER_3)  &kp LS(NUMBER_4)  &kp LS(NUMBER_5)  &kp LS(NUMBER_6)  &kp LS(NUMBER_7)   &kp LS(NUMBER_8)  &kp LS(NUMBER_9)  &kp LS(NUMBER_0)
+&kp GRAVE         &kp COMMA         &kp BACKSLASH     &kp LEFT_BRACKET  &kp MINUS         &kp EQUAL         &kp RIGHT_BRACKET  &kp SLASH         &kp PERIOD        &kp SINGLE_QUOTE
+&kp TILDE         &kp LESS_THAN     &kp PIPE          &kp LEFT_BRACE    &kp UNDERSCORE    &kp PLUS          &kp RIGHT_BRACE    &kp QUESTION      &kp GREATER_THAN  &kp DOUBLE_QUOTES
+&none             &none             &none             &none             &none             &none             &none              &none             &kp SEMICOLON     &kp COLON
             >;
         };
 
-        layer1 {
+        Number {
             label = "NUMBER";
             bindings = <
-&kp N0     &kp N1  &kp N2  &kp N3     &trans  &kp MINUS  &trans     &kp UP    &trans     &trans
-&kp EQUAL  &kp N4  &kp N5  &kp N6     &trans  &kp PLUS   &kp LEFT   &kp DOWN  &kp RIGHT  &trans
-&trans     &kp N7  &kp N8  &kp N9     &trans  &kp ASTRK  &kp SLASH  &kp LBKT  &kp RBKT   &trans
-&trans     &trans  &trans  &kp LSHFT  &trans  &trans     &trans     &trans    &trans     &trans
+&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PLUS      &kp MINUS  &kp F1   &kp F2   &kp F3      &kp F4  &kp F5
+&kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK  &kp SLASH  &kp F6   &kp F7   &kp F8      &kp F9  &kp F10
+&kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp DOT       &kp COMMA  &kp F11  &kp F12  &none       &none   &none
+&kp NUMBER_0  &kp EQUAL     &none         &none         &none      &none    &none    &kp ESCAPE  &none   &none
             >;
         };
 
-        layer2 {
-            label = "FUNCTION";
+        Mouse {
+            label = "mouse";
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp F1   &kp F2   &kp F3  &kp F4  &kp F5
-&trans        &trans        &trans        &trans        &bt BT_CLR      &kp F6   &kp F7   &kp F8  &kp F9  &kp F10
-&trans        &trans        &trans        &trans        &bt BT_CLR_ALL  &kp F11  &kp F12  &trans  &trans  &trans
-&trans        &trans        &trans        &trans        &trans          &kp DEL  &trans   &trans  &trans  &trans
-            >;
-        };
-
-        layer3 {
-            label = "MOUSE";
-            bindings = <
-&trans     &trans  &trans    &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans     &trans  &trans    &trans    &trans  &trans  &trans    &trans    &trans    &trans
-&trans     &trans  &trans    &trans    &trans  &trans  &trans    &trans    &trans    &trans
-&kp LSHFT  &trans  &kp LCMD  &kp LALT  &to 0   &trans  &trans    &trans    &to 0     &kp RALT
+&bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4     &none      &none      &none      &none  &none
+&none         &none           &none           &kp UP_ARROW    &none            &mkp LCLK  &mkp MCLK  &mkp RCLK  &none  &none
+&none         &none           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &mkp MB4   &none      &mkp MB5   &none  &none
+&bt BT_CLR    &bt BT_CLR_ALL  &none           &none           &none            &none      &none      &none      &none  &soft_off
             >;
         };
     };
