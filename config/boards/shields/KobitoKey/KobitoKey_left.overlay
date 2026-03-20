@@ -1,9 +1,9 @@
+#include "kobitokey.dtsi"
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
-#include "kobitokey.dtsi"
+#include <input/processors/sensor_rotation.dtsi>
 
 &xiao_serial { status = "disabled"; };
-
 
 &pinctrl {
     spi0_default: spi0_default {
@@ -37,17 +37,33 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <200>; /* センサー感度 */
-
-
+        cpi = <200>;
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
     };
 };
 
-
+/ {
+    sensor_rotation_left: sensor-rotation-left {
+        compatible = "zmk,input-processor-sensor-rotation";
+        status = "okay";
+        #input-processor-cells = <0>;
+        rotation-angle = <(-24)>;
+    };
+};
 
 &tb_left_split {
     device = <&tb_left>;
+};
+
+&tb_left_listener {
+    status = "okay";
+    input-processors =
+        <&sensor_rotation_left>,
+        <&zip_x_scaler 0 1>,
+        <&zip_y_scaler 1 15>,
+        <&zip_xy_to_scroll_mapper>,
+        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
+        <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
 };
