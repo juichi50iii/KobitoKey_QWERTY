@@ -35,7 +35,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <600>;
+        cpi = <120>;
         
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
@@ -59,9 +59,8 @@
     };
 
   /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
-    // compatible = "zmk,input-processor-temp-layer";
-    // #input-processor-cells = <2>;
-    // require-prior-idle-ms = <350>;
+    compatible = "zmk,input-processor-temp-layer";
+    #input-processor-cells = <2>;
   };
 };
 
@@ -82,9 +81,7 @@
     device = <&tb_right>;
 
     input-processors =
-        <&zip_xy_scaler 2 1>,
-        <&sensor_rotation_right>,
-        <&zip_temp_layer 3 5000>;
+        <&sensor_rotation_right>;
 };
 
 
