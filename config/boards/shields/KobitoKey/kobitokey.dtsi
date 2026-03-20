@@ -9,11 +9,10 @@
         diode-direction = "col2row";
         wakeup-source;
 
-        /* Dピンは &xiao_d <番号> で指定（XIAOフォーマット） */
-        row-gpios = <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* 例: D0 */
-                    <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* 例: D1 */
-                    <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>, /* 例: D2 */
-                    <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>; /* 例: D3 */
+        row-gpios = <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,
+                    <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
         col-gpios = <&xiao_d 10 GPIO_ACTIVE_HIGH>, 
                     <&xiao_d 9 GPIO_ACTIVE_HIGH> , 
                     <&xiao_d 8 GPIO_ACTIVE_HIGH> , 
@@ -34,12 +33,12 @@
         >;
     };
 
-    /* 右側トラックボールを split 入力として扱う（ID=0） */
+    /* 左側トラックボールを split 入力として扱う（ID=0） */
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
 
-        tb_right_split: tb_right_split@0 {
+        tb_left_split: tb_left_split@0 {
             compatible = "zmk,input-split";
             reg = <0>;
         };
@@ -49,30 +48,23 @@
     tb_left_listener: tb_left_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
+        device = <&tb_left_split>;
     };
 
     tb_right_listener: tb_right_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
-        device = <&tb_right_split>;
-        
     };
-};
 
-
-/ {
-    /* ★ 単体の物理レイアウト定義（Studio不要の最小形） */
+    /* デフォルトの物理レイアウト定義。KobitoKey-layouts.dtsi の情報を活用 */
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
-
-        /* 既に定義済みの kscan と matrix transform を参照 */
         kscan = <&kscan0>;
         transform = <&default_transform>;
     };
 
-    /* ★ デフォルトで使うレイアウトを chosen で指す */
     chosen {
         zmk,physical-layout = &physical_layout0;
     };
-};
+};

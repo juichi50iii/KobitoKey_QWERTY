@@ -1,5 +1,4 @@
-# 左（central）
-if SHIELD_KOBITOKEY_LEFT
+if SHIELD_KOBITOKEY_LEFT || SHIELD_KOBITOKEY_RIGHT
 config ZMK_KEYBOARD_NAME
     default "KobitoKey"
 endif

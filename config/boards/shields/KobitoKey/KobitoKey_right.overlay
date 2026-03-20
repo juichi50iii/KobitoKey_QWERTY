@@ -2,6 +2,8 @@
 #include "kobitokey.dtsi"
 #include <input/processors.dtsi>
 
+&xiao_serial { status = "disabled"; };
+
 /* 列オフセット */
 &default_transform { col-offset = <5>; };
 
@@ -33,7 +35,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        cpi = <600>;
+        cpi = <1200>;
         
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
@@ -41,8 +43,50 @@
     };
 };
 
-&tb_right_split {
+/ {
+    sensor_rotation_left: sensor-rotation-left {
+        compatible = "zmk,input-processor-sensor-rotation";
+        status = "okay";
+        #input-processor-cells = <0>;
+        rotation-angle = <(-24)>;
+    };
+
+    sensor_rotation_right: sensor-rotation-right {
+        compatible = "zmk,input-processor-sensor-rotation";
+        #input-processor-cells = <0>;
+        status = "okay";
+        rotation-angle = <24>;
+    };
+
+  /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+    compatible = "zmk,input-processor-temp-layer";
+    #input-processor-cells = <2>;
+  };
+};
+
+&tb_left_listener {
+    status = "okay";
+    /* deviceはkobitokey.dtsiで&tb_left_splitに指定済み */
+    input-processors =
+        <&sensor_rotation_left>,
+        <&zip_x_scaler 0 1>,
+        <&zip_y_scaler 1 15>,
+        <&zip_xy_to_scroll_mapper>,
+        <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
+        <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
+};
+
+&tb_right_listener {
+    status = "okay";
     device = <&tb_right>;
 
-    input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+    input-processors =
+        <&sensor_rotation_right>;
+};
+
+
+&zip_temp_layer {
+    excluded-positions = <
+        6 7 8 30 32 33 39
+    >;
 };
