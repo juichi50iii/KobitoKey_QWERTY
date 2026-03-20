@@ -58,10 +58,15 @@
         rotation-angle = <24>;
     };
 
-  /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
-    compatible = "zmk,input-processor-temp-layer";
-    #input-processor-cells = <2>;
-  };
+    /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+    };
+  
+    soft_off_wakers: soft_off_wakers {
+        compatible = "zmk,soft-off-wakeup-sources";
+        wakeup-sources = <&kscan0>;
+    };
 };
 
 &tb_left_listener {
