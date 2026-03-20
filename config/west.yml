@@ -31,7 +31,7 @@ manifest:
     # LED
     - name: zmk-rgbled-widget  # <-- led
       remote: caksoylar
-      revision: v0.3
+      revision: main
       
   self:
     path: config
