@@ -62,7 +62,7 @@
 &kp Q           &kp W           &kp E             &kp R               &kp T         &kp Y        &kp U         &kp I         &kp O  &kp P
 &kp A           &kp S           &kp D             &kp F               &kp G         &kp H        &kp J         &kp K         &kp L  &mo 5
 &none           &kp Z           &kp X             &kp C               &kp V         &kp B        &kp N         &kp M         &none  &Delete_Backspace
-&kp LANGUAGE_1  &kp LANGUAGE_2  &kp LEFT_CONTROL  &mt LEFT_SHIFT TAB  &lt 2 RETURN  &lt 4 SPACE  &kp LEFT_ALT  &kp LEFT_GUI  &to 0  &to 1
+&kp LANGUAGE_1  &kp LANGUAGE_2  &mt LEFT_CONTROL TAB  &kp LEFT_SHIFT  &lt 2 RETURN  &lt 4 SPACE  &kp LEFT_ALT  &kp LEFT_GUI  &to 0  &to 1
             >;
         };
 
