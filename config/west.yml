@@ -32,6 +32,23 @@ manifest:
     - name: zmk-rgbled-widget  # <-- led
       remote: caksoylar
       revision: v0.3
-      
+     manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    # ── ここから追加 ──
+    - name: eswai
+      url-base: https://github.com/eswai
+    # ── ここまで追加 ──
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    # ── ここから追加 ──
+    - name: zmk-naginata
+      remote: eswai
+      revision: main
+    # ── ここまで追加 ── 
   self:
     path: config
