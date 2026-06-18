@@ -74,5 +74,14 @@
 &kp LSHFT  &trans  &kp LCMD  &kp LALT  &to 0   &trans  &trans    &trans    &to 0     &kp RALT
             >;
         };
+
+        control {
+            bindings = <
+&kp Q       &kp L   &kp U   &kp COMMA  &kp DOT    &kp F   &kp W   &kp R   &kp Y   &kp P
+&kp E       &kp I   &kp A   &kp O      &kp MINUS  &kp K   &kp T   &kp N   &kp S   &kp H
+&kp Z       &kp X   &kp C   &kp V      &kp SEMI   &kp G   &kp D   &kp M   &kp J   &kp B
+&kp LSHIFT  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans
+            >;
+        };
     };
 };
