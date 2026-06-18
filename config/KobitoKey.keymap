@@ -41,7 +41,7 @@
 &kp Q      &kp L     &kp U     &kp COMMA    &kp PERIOD        &kp F        &kp W          &kp R        &kp Y      &kp P
 &kp E      &kp I     &kp A     &kp O        &kp MINUS         &kp K        &kp T          &kp N        &kp S      &kp H
 &kp Z      &kp X     &kp C     &kp V        &kp SEMICOLON     &kp G        &kp D          &kp M        &kp J      &kp B
-&kp LSHFT  &kp LALT  &kp LCMD  &lt 2 SPACE  &lt 3 LANGUAGE_1  &lt 2 LANG2  &kp BACKSPACE  &lt 1 ENTER  &kp RSHFT  &mt LALT SLASH
+&kp LSHFT  &kp LALT  &kp LCMD  &lt 2 SPACE  &lt 4 LANGUAGE_1  &lt 2 LANG2  &kp BACKSPACE  &lt 1 ENTER  &kp RSHFT  &mt LALT SLASH
             >;
         };
 
