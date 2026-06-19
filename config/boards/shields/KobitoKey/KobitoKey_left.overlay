@@ -86,6 +86,24 @@
 &tb_right_listener {
     status = "okay";
 
+    smaller_dpi {
+        layers = <7>;
+        input-processors =
+        <&sensor_rotation_right>,
+            <&zip_xy_scaler 1 5>;
+    };
+
+    change_layer {
+        layers = <0>;
+        input-processors = 
+            <&sensor_rotation_right>,
+            <&zip_xy_scaler 1 1>,
+            <&zip_temp_layer 3 5000>; 
+    };
+
+&tb_right_listener {
+    status = "okay";
+
     input-processors =
         <&sensor_rotation_right>,
         <&zip_temp_layer 3 5000>; /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
