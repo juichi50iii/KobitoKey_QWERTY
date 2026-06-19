@@ -38,10 +38,10 @@
 
         default_layer {
             bindings = <
-&kp Q      &kp L     &kp U     &kp COMMA    &kp PERIOD        &kp F        &kp W          &kp R        &kp Y      &kp P
-&kp E      &kp I     &kp A     &kp O        &kp MINUS         &kp K        &kp T          &kp N        &kp S      &kp H
-&kp Z      &kp X     &kp C     &kp V        &kp SEMICOLON     &kp G        &kp D          &kp M        &kp J      &kp B
-&kp LSHFT  &kp LALT  &kp LCMD  &lt 2 SPACE  &lt 4 LANGUAGE_1  &lt 2 LANG2  &kp BACKSPACE  &lt 1 ENTER  &kp RSHFT  &mt LALT SLASH
+&kp Q      &kp L     &kp U     &kp COMMA    &kp PERIOD        &kp F             &kp W          &kp R        &kp Y      &kp P
+&kp E      &kp I     &kp A     &kp O        &kp MINUS         &kp K             &kp T          &kp N        &kp S      &kp H
+&kp Z      &kp X     &kp C     &kp V        &kp SEMICOLON     &kp G             &kp D          &kp M        &kp J      &kp B
+&kp LSHFT  &kp LALT  &kp LCMD  &lt 2 SPACE  &lt 4 LANGUAGE_2  &lt 2 LANGUAGE_1  &kp BACKSPACE  &lt 1 ENTER  &kp RSHFT  &mt LALT SLASH
             >;
         };
 
@@ -61,7 +61,7 @@
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp F1   &kp F2   &kp F3  &kp F4  &kp F5
 &trans        &trans        &trans        &trans        &bt BT_CLR      &kp F6   &kp F7   &kp F8  &kp F9  &kp F10
 &trans        &trans        &trans        &trans        &bt BT_CLR_ALL  &kp F11  &kp F12  &trans  &trans  &trans
-&trans        &trans        &trans        &trans        &trans          &kp DEL  &trans   &trans  &trans  &trans
+&trans        &kp LEFT_ALT  &trans        &trans        &trans          &kp DEL  &trans   &trans  &trans  &kp RIGHT_ALT
             >;
         };
 
@@ -77,10 +77,10 @@
 
         control {
             bindings = <
-&kp Q       &kp L   &kp U   &kp COMMA  &kp DOT    &kp F   &kp W   &kp R   &kp Y   &kp P
-&kp E       &kp I   &kp A   &kp O      &kp MINUS  &kp K   &kp T   &kp N   &kp S   &kp H
-&kp Z       &kp X   &kp C   &kp V      &kp SEMI   &kp G   &kp D   &kp M   &kp J   &kp B
-&kp LSHIFT  &trans  &trans  &trans     &trans     &trans  &trans  &trans  &trans  &trans
+&kp LC(Q)   &kp LC(L)     &kp LC(U)     &kp LC(PLUS)  &kp LC(RS(SEMICOLON))  &kp LC(F)  &kp LC(W)   &kp LC(R)  &kp LC(Y)  &kp LC(P)
+&kp LC(E)   &kp LC(I)     &kp LC(A)     &kp LC(O)     &kp LC(MINUS)          &kp LC(K)  &kp LC(T)   &kp LC(N)  &kp LC(S)  &kp LC(H)
+&kp LC(Z)   &kp LC(X)     &kp LC(C)     &kp LC(V)     &kp LC(SEMI)           &kp LC(G)  &kp LC(D)   &kp LC(M)  &kp LC(J)  &kp LC(B)
+&kp LSHIFT  &kp LEFT_ALT  &kp LEFT_GUI  &trans        &trans                 &trans     &kp DELETE  &kp ENTER  &trans     &kp RIGHT_ALT
             >;
         };
     };
