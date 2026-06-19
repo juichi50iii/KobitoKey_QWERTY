@@ -39,6 +39,7 @@
         irq-gpios = <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         cpi = <200>; /* センサー感度 */
 
+
         evt-type = <INPUT_EV_REL>;
         x-input-code = <INPUT_REL_X>;
         y-input-code = <INPUT_REL_Y>;
@@ -72,7 +73,7 @@
             <&zip_xy_to_scroll_mapper>,
             <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
             <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>;
-};
+    };
 
 / {
   /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
@@ -82,24 +83,16 @@
   };
 };
 
-/* --- ここから右トラックボールの設定を完全に1つに統合 --- */
 &tb_right_listener {
     status = "okay";
 
-    /* [デフォルト挙動] どのレイヤー条件（0や7）にも当てはまらない通常時の処理 */
-    input-processors =
-        <&sensor_rotation_right>,
-        <&zip_temp_layer 3 5000>; /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
-
-    /* [レイヤー7] DPIを1/5に減速（オートマウスは発動しない精密モード） */
     smaller_dpi {
         layers = <7>;
         input-processors =
-            <&sensor_rotation_right>,
+        <&sensor_rotation_right>,
             <&zip_xy_scaler 1 5>;
     };
 
-    /* [レイヤー0] 通常速度（等倍）+ オートマウス発動 */
     change_layer {
         layers = <0>;
         input-processors = 
@@ -107,8 +100,11 @@
             <&zip_xy_scaler 1 1>,
             <&zip_temp_layer 3 5000>; 
     };
+
+    input-processors =
+        <&sensor_rotation_right>,
+        <&zip_temp_layer 3 5000>; /* オートマウスレイヤーの指定とトラボ操作及びマウスボタン押下後に滞留する時間 */
 };
-/* --- 右トラックボールの設定 統合ここまで --- */
 
 &zip_temp_layer {
     excluded-positions = <
