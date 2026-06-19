@@ -85,9 +85,10 @@
         };
 
         layer_5 {
+            label = "WINDOW_NAV";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LC(LEFT)  &kp LC(UP)    &kp LC(RIGHT)  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &kp LC(DOWN)  &trans         &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
