@@ -1,7 +1,5 @@
 #include "kobitokey.dtsi"
-#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <input/processors.dtsi>
-#include <input/processors/sensor_rotation.dtsi>
 
 &xiao_serial { status = "disabled"; };
 
@@ -46,65 +44,7 @@
     };
 };
 
-/ {
-    sensor_rotation_left: sensor-rotation-left {
-        compatible = "zmk,input-processor-sensor-rotation";
-        status = "okay";
-        #input-processor-cells = <0>;
-        rotation-angle = <(-24)>;
-    };
-
-    sensor_rotation_right: sensor-rotation-right {
-        compatible = "zmk,input-processor-sensor-rotation";
-        #input-processor-cells = <0>;
-        status = "okay";
-        rotation-angle = <24>;
-    };
-};
-
-&tb_left_listener {
-    status = "okay";
+/* Send the left PMW3610 events across split BLE to right central. */
+&tb_left_split {
     device = <&tb_left>;
-
-    input-processors =
-        <&sensor_rotation_left>;
-};
-
-/ {
-  /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
-    compatible = "zmk,input-processor-temp-layer";
-    #input-processor-cells = <2>;
-    require-prior-idle-ms = <350>; /* キー押下後、何msオートマウスレイヤに入らないようにするか、誤爆防止 */
-  };
-};
-
-&tb_right_listener {
-    status = "okay";
-
-    /* 通常時: 右手トラックボールはマウス移動 */
-    input-processors =
-        <&sensor_rotation_right>;
-
-    /* layer4 有効時: 右手トラックボールをスクロール化 */
-    right_scroll_layer {
-        layers = <4>;
-        input-processors =
-            <&sensor_rotation_right>,
-            <&zip_x_scaler 1 50>,
-            <&zip_y_scaler 1 15>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
-    };
-};
-
-&zip_temp_layer {
-    excluded-positions = <
-        6
-        7
-        8
-        30
-        32
-        33
-        39
-    >;
 };

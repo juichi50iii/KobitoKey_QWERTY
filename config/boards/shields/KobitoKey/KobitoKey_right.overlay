@@ -1,6 +1,9 @@
 #include <zephyr/dt-bindings/pinctrl/nrf-pinctrl.h>
 #include "kobitokey.dtsi"
 #include <input/processors.dtsi>
+#include <input/processors/sensor_rotation.dtsi>
+
+&xiao_serial { status = "disabled"; };
 
 /* 列オフセット */
 &default_transform { col-offset = <5>; };
@@ -41,8 +44,66 @@
     };
 };
 
-&tb_right_split {
-    device = <&tb_right>;
 
-    input-processors = <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>;
+/* Both input listeners run on the RIGHT central half. */
+/ {
+    sensor_rotation_left: sensor-rotation-left {
+        compatible = "zmk,input-processor-sensor-rotation";
+        status = "okay";
+        #input-processor-cells = <0>;
+        rotation-angle = <(-24)>;
+    };
+
+    sensor_rotation_right: sensor-rotation-right {
+        compatible = "zmk,input-processor-sensor-rotation";
+        status = "okay";
+        #input-processor-cells = <0>;
+        rotation-angle = <24>;
+    };
+
+    /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <350>;
+    };
+};
+
+/* Events received from the LEFT peripheral. No coordinate changes on the peripheral. */
+&tb_left_listener {
+    status = "okay";
+    device = <&tb_left_split>;
+    input-processors = <&sensor_rotation_left>;
+};
+
+/* Local RIGHT PMW3610 (no split BLE hop). Preserve Y inversion from old right-split. */
+&tb_right_listener {
+    status = "okay";
+    device = <&tb_right>;
+    input-processors =
+        <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
+        <&sensor_rotation_right>;
+
+    /* Preserve existing layer-4 conversion to scroll. */
+    right_scroll_layer {
+        layers = <4>;
+        input-processors =
+            <&zip_xy_transform INPUT_TRANSFORM_Y_INVERT>,
+            <&sensor_rotation_right>,
+            <&zip_x_scaler 1 50>,
+            <&zip_y_scaler 1 15>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+    };
+};
+
+&zip_temp_layer {
+    excluded-positions = <
+        6
+        7
+        8
+        30
+        32
+        33
+        39
+    >;
 };
