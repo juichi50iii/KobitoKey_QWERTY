@@ -1,12 +1,12 @@
 include:
   - board: seeeduino_xiao_ble
     shield: KobitoKey_left rgbled_adapter
-    cmake-args: -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/modules/custom_battery_typist"
+    cmake-args: -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/modules/custom_battery_typist;${GITHUB_WORKSPACE}/modules/zmk-rgbled-widget"
 
   - board: seeeduino_xiao_ble
     shield: KobitoKey_right rgbled_adapter
     snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/modules/custom_battery_typist"
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DZMK_EXTRA_MODULES="${GITHUB_WORKSPACE}/modules/custom_battery_typist;${GITHUB_WORKSPACE}/modules/zmk-rgbled-widget"
 
   - board: seeeduino_xiao_ble
     shield: settings_reset

@@ -1,0 +1,19 @@
+/ {
+    aliases {
+        led-red = &led0;
+        led-green = &led1;
+        led-blue = &led2;
+    };
+
+    leds {
+        status = "okay";
+    };
+};
+
+
+/ {
+    kobito_charging: kobito-charging {
+        /* XIAO charger CHG output, open drain and active while charging. */
+        gpios = <&gpio0 17 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    };
+};
